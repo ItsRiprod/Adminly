@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'com.azuredoom.hytale-tools' version '1.0.38'
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+    maven { url "https://www.cursemaven.com" }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of((project.java_version as String).toInteger())
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+
+base {
+    archivesName = 'Adminly'
+}
+
+configurations {
+    testCompileOnly.extendsFrom(compileOnly)
+    testRuntimeOnly.extendsFrom(compileOnly)
+}
+
+dependencies {
+    compileOnly libs.jetbrains.annotations
+    compileOnly libs.jspecify
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.3'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.3'
+}
+
+hytaleTools {
+    javaVersion = project.java_version as Integer
+    hytaleVersion = project.hytale_version.toString()
+    manifestServerVersion = project.manifestServerVersion.toString()
+    manifestGroup = project.manifest_group.toString()
+    modId = project.mod_id.toString()
+    modDescription = project.mod_description.toString()
+    modUrl = project.mod_url.toString()
+    mainClass = project.main_class.toString()
+    modCredits = project.mod_credits.toString()
+    manifestDependencies = project.manifest_dependencies.toString()
+    manifestOptionalDependencies = project.manifest_opt_dependencies.toString()
+    curseforgeId = project.curseforgeID.toString()
+    disabledByDefault = project.disabled_by_default.toString().toBoolean()
+    includesPack = project.includes_pack.toString().toBoolean()
+    patchline = project.patchline.toString()
+
+    debugEnabled = true
+    debugSuspend = false
+
+    requireDcevm = true
+} 
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
