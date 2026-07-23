@@ -34,12 +34,26 @@ public final class AutoRestartConfig {
             o -> o.retryWindowSeconds
         )
         .add()
+        .append(
+            new KeyedCodec<>("CrashLogEnabled", Codec.BOOLEAN),
+            (o, v) -> o.crashLogEnabled = v,
+            o -> o.crashLogEnabled
+        )
+        .add()
+        .append(
+            new KeyedCodec<>("CrashLogFile", Codec.STRING),
+            (o, v) -> o.crashLogFile = v,
+            o -> o.crashLogFile
+        )
+        .add()
         .build();
 
     private boolean enabled = true;
     private long restartDelaySeconds = 10L;
     private int maxRetries = 3;
     private long retryWindowSeconds = 300L;
+    private boolean crashLogEnabled = true;
+    private String crashLogFile = "crashes.log";
 
     public boolean isEnabled() {
         return enabled;
@@ -55,5 +69,13 @@ public final class AutoRestartConfig {
 
     public long getRetryWindowSeconds() {
         return retryWindowSeconds;
+    }
+
+    public boolean isCrashLogEnabled() {
+        return crashLogEnabled;
+    }
+
+    public String getCrashLogFile() {
+        return crashLogFile;
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.azuredoom.hytale-tools' version '1.0.38'
+    id 'com.azuredoom.hytalepublisher' version '1.+'
 }
 
 repositories {
@@ -56,6 +57,29 @@ hytaleTools {
 
     requireDcevm = true
 } 
+
+hytalePublisher {
+    version       = project.version
+    releaseType   = "release"
+    changelogFile = "changelog.md"
+    gameVersion   = project.hytale_version.toString()
+
+    modtale {
+        enabled   = false
+        projectId = project.modtale_uuid
+        patchline = 'release'
+    }
+
+    curseforge {
+        enabled   = true
+        projectId = project.curseforgeID
+    }
+
+    modifold {
+        enabled   = true
+        projectId = project.mod_id
+    }
+}
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()

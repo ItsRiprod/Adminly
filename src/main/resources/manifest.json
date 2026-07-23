@@ -1,7 +1,7 @@
 {
     "Group": "Riprod",
     "Name": "Adminly",
-    "Version": "3.2.0",
+    "Version": "0.1.0",
     "Description": "Server administration utilities. Auto-restarts a world that crashes on its own thread.",
     "Authors": [
         {

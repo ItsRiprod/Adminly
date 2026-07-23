@@ -17,7 +17,7 @@ public final class AdminlyPlugin extends JavaPlugin {
 
     @Override
     protected void setup() {
-        WorldRestartService service = new WorldRestartService(config);
+        WorldRestartService service = new WorldRestartService(config, getDataDirectory());
         getEventRegistry().registerGlobal(RemoveWorldEvent.class, service::onWorldRemoved);
     }
 }
