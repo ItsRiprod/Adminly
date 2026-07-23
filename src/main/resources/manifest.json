@@ -20,6 +20,6 @@
     "IncludesAssetPack": false,
     "Main": "com.riprod.adminly.AdminlyPlugin",
     "UpdateChecker": {
-        "CurseForge": ""
+        "CurseForge": "1622682"
     }
 }

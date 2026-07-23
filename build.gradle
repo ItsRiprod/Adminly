@@ -65,7 +65,7 @@ hytalePublisher {
     gameVersion   = project.hytale_version.toString()
 
     modtale {
-        enabled   = false
+        enabled   = true
         projectId = project.modtale_uuid
         patchline = 'release'
     }
