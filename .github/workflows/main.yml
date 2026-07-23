@@ -1,0 +1,35 @@
+name: Publish Mod
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    env:
+      MODTALE_KEY: ${{ secrets.MODTALE_KEY }}
+      CURSE_KEY: ${{ secrets.CURSE_KEY }}
+      MODIFOLD_KEY: ${{ secrets.MODIFOLD_KEY }}
+      TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Publish enabled platforms
+        run: |
+          chmod +x ./gradlew
+          ls -l ./gradlew
+          ./gradlew publishAll
