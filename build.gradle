@@ -1,13 +1,13 @@
 plugins {
     id 'java'
-    id 'com.azuredoom.hytale-tools' version '1.0.38'
+    id 'com.azuredoom.hytale-tools' version '1.+'
     id 'com.azuredoom.hytalepublisher' version '1.+'
 }
 
 repositories {
     mavenCentral()
     gradlePluginPortal()
-    maven { url "https://www.cursemaven.com" }
+    maven { url = uri("https://www.cursemaven.com") }
 }
 
 java {

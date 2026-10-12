@@ -1,7 +1,7 @@
 {
     "Group": "Riprod",
     "Name": "Adminly",
-    "Version": "0.1.0",
+    "Version": "0.2.0",
     "Description": "Server administration utilities. Auto-restarts a world that crashes on its own thread.",
     "Authors": [
         {
@@ -9,7 +9,7 @@
         }
     ],
     "Website": "https://modtale.net/mod/adminly",
-    "ServerVersion": ">=0.5.0 <0.6.0",
+    "ServerVersion": "^0.7.0",
     "Dependencies": {
         
     },
